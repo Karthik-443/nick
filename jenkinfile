@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build') {
+            steps {
+                sh 'python3 hello.py'
+            }
+            post {
+                always {
+                    mail bcc: '', body: 'jenkins', cc: '', from: '', replyTo: '', subject: 'Jenkins -CICD', to: 'karthikramachandren@gmail.com'
+                }
+               
+            }
+        }
+    }
+}
